@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>TypeScript HTML App</title>
+</head>
+<body>
+    <h1>TypeScript modules and RequireJS</h1>
+    <button onclick="myApp.addSquare()">Add square</button>
+    <button onclick="myApp.addTriangle()">Add triangle</button>
+
+    <div id="content"></div>
+
+    <script data-main="app" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.16/require.min.js"></script>
+    <script>
+        var myApp;
+        require(["app"], function(app){
+            myApp = new app.Leccion07.Application();
+        });
+
+    </script>
+</body>
+</html>
