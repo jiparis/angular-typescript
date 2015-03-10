@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AngularJS controllers</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="HeroesController">
+        <label for="thename">Add name: </label>
+        <input id="thename" type="text" ng-model="name" />
+        <input type="button" ng-click="addName(name)" value="Add">
+
+        <ul>
+            <li ng-repeat="name in heroes track by $index">{{name}}</li>
+        </ul>
+
+        <img ng-show="showImg" src="https://pbs.twimg.com/media/B0PLvLtCYAAr5Oe.png:large">
+    </div>
+
+    <script src="../lib/angularjs/angular.min.js"></script>
+    <script src="controllers/HeroesController.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

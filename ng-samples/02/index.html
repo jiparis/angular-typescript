@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AngularJS arrays</title>
+    <style type="text/css">
+        .odd {color: green;}
+        .even{color: brown;}
+    </style>
+</head>
+<body ng-app>
+
+    <label for="thename">Nuevo superhéroe: </label>
+    <input id="thename" type="text" ng-model="name" />
+    <input type="button" ng-click="superheroes.push(name)" value="Add">
+
+    <ul ng-init="superheroes = ['Superman', 'The Green Steak', 'Scorpion Shadow', 'Doctor Cranium']">
+        <li ng-repeat="name in superheroes track by $index"
+                ng-class="{'odd': $odd, 'even': $even}">{{name}}</li>
+    </ul>
+
+    <img ng-if="superheroes.indexOf('Batman') >= 0" src="https://pbs.twimg.com/media/B0PLvLtCYAAr5Oe.png:large">
+
+    <script src="../lib/angularjs/angular.min.js"></script>
+</body>
+</html>
