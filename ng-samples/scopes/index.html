@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AngularJS $scopes</title>
+</head>
+<body ng-app="ScopesApp">
+<h4>Herencia $scope: primitivas</h4>
+<div ng-controller="ParentController">
+    <label for="parent">Parent: </label>
+    <input type="text" id="parent" ng-model="nombre" />
+
+    <div ng-controller="ChildController">
+        <label for="child1">Child 1: </label>
+        <input type="text" id="child1" ng-model="nombre" />
+
+    </div>
+
+    <div ng-controller="ChildController">
+        <label for="child2">Child 2: </label>
+        <input type="text" id="child2" ng-model="nombre" />
+
+    </div>
+</div>
+
+<h4>Herencia $scope: objetos</h4>
+<div ng-controller="ParentController">
+    <label for="parent2">Parent: </label>
+    <input type="text" id="parent2" ng-model="persona.nombre" />
+
+    <div ng-controller="ChildController">
+        <label for="child12">Child 1: </label>
+        <input type="text" id="child12" ng-model="persona.nombre" />
+    </div>
+
+    <div ng-controller="ChildController">
+        <label for="child22">Child 2: </label>
+        <input type="text" id="child22" ng-model="persona.nombre" />
+    </div>
+</div>
+<script src="../lib/angularjs/angular.min.js" ></script>
+<script src="app.js" ></script>
+
+</body>
+</html>
