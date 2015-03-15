@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AngularJS custom filters</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="namesController">
+        <label for="thefilter">Filter:</label>
+        <input id="thefilter" type="text" ng-model="nameFilter"/>
+
+        <label for="thename">Add name: </label>
+        <input id="thename" type="text" ng-model="name" />
+        <input type="button" ng-click="addName(name)" value="Add">
+
+        <ul>
+            <li ng-repeat="person in people | filter:nameFilter | orderBy:'name' track by $index">
+                {{person.name}}, {{person.name | dash}}
+            </li>
+        </ul>
+
+        <br />
+        
+        <ul>
+        <li>{{ "lower cap string" | uppercase }}</li>
+        <li>{{ {foo: "bar", baz: 23} | json }}</li>
+        <li>{{ 1304375948024 | date }}</li>
+        <li>{{ 1304375948024 | date:"MM/dd/yyyy @ h:mma" }}</li>
+        </ul>
+        <img ng-show="showImg" src="https://pbs.twimg.com/media/B0PLvLtCYAAr5Oe.png:large">
+    </div>
+
+    <script src="../lib/angularjs/angular.min.js"></script>
+    <script src="controllers/namesController.js"></script>
+    <script src="filters/dashFilter.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
