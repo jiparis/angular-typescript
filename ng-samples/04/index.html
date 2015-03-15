@@ -5,15 +5,15 @@
 </head>
 <body ng-app="myApp">
     <div ng-controller="namesController">
-        <label for="thefilter">Filter:</label>
-        <input name="thefilter" type="text" ng-model="nameFilter"/>
+        <label for="thefilter">Filtro:</label>
+        <input id="thefilter" type="text" ng-model="filtro"/>
 
-        <label for="thename">Add name: </label>
-        <input name="thename" type="text" ng-model="name" />
+        <label for="thename">Nuevo nombre: </label>
+        <input id="thename" type="text" ng-model="name" />
         <input type="button" ng-click="addName(name)" value="Add">
 
         <ul>
-            <li ng-repeat="person in people | filter:nameFilter | orderBy:'name' track by $index">{{person.name}}</li>
+            <li ng-repeat="person in people | filter:filtro | orderBy:name track by $index">{{person.name}}</li>
         </ul>
       
         <img ng-show="showImg" src="https://pbs.twimg.com/media/B0PLvLtCYAAr5Oe.png:large">
