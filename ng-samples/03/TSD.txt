@@ -1,0 +1,2 @@
+tsd init
+tsd query angular --action install

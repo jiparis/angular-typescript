@@ -1,0 +1,11 @@
+1. instala bower
+npm install bower -g
+
+2. establece el directorio de dependencias
+echo '{"directory":"lib"}' > .bowerrc
+
+3. inicia
+bower init
+
+4. instala
+bower install angularjs --save
