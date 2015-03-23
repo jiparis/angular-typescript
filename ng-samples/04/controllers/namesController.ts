@@ -3,6 +3,8 @@ module Lesson04 {
     export interface IAppScope extends ng.IScope {
         people: any[];
         showImg: boolean;
+        getFiltered: () => any[];
+        filtro: string;
 
         // methods
         addName: (name: string) => void;
@@ -10,20 +12,23 @@ module Lesson04 {
 
     export class NamesController {
         static $inject = [
-            "$scope"
+            "$scope",
+            "filterFilter"
         ];
 
         showImg = false;
-        people = [];
+        heroes = [];
 
-        constructor(private $scope: IAppScope) {     
-            $scope.people = this.people;
+        constructor(private $scope: IAppScope,
+            filterFilter) {
+            $scope.people = this.heroes;
             // use arrow syntax for event handlers !!!
-            $scope.addName = (newName: string) => {
-                this.people.push({ name: newName });
-                $scope.showImg = angular.equals(name, "Batman");
-            } 
-        }
+            $scope.addName = (newName:string) => {
+                this.heroes.push({name: newName});
+                $scope.showImg = name == "Batman";
+            };
 
+            $scope.getFiltered = () => filterFilter(this.heroes, $scope.filtro);
+        }
     }
 }

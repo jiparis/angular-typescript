@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AngularJS custom filters</title>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="namesController">
+        <label for="thefilter">Filter:</label>
+        <input name="thefilter" type="text" ng-model="nameFilter"/>
+
+        <label for="thename">Add name: </label>
+        <input name="thename" type="text" ng-model="name" />
+        <input type="button" ng-click="addName(name)" value="Add">
+        <input type="button" ng-click="addRandom()" value="Add random">
+
+        <ul>
+            <li ng-repeat="person in people | filter:nameFilter | orderBy:'name' track by $index">
+                {{person.name}}, {{person.name | dash}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script src="../lib/angularjs/angular.min.js"></script>
+    <script src="services/namesServices.js"></script>
+    <script src="controllers/namesController.js"></script>
+    <script src="filters/dashFilter.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
