@@ -1,4 +1,8 @@
-﻿/// <reference path="controllers/namesController.ts" />
+﻿/// <reference path="../typings/angularjs/angular.d.ts" />
+/// <reference path="controllers/namesController.ts" />
+/// <reference path="filters/dashFilter.ts" />
+/// <reference path="services/namesServices.ts" />
+
 
 module Lesson06{
     'use strict';
