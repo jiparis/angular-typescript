@@ -1,5 +1,5 @@
 ﻿
-module Lesson06 {
+module Lesson07 {
     export interface Hero{
         name: string;
     }
@@ -23,16 +23,25 @@ module Lesson06 {
     export class SuperHeroesService {
         static $inject = [
             "superHeroes",
-            "randomHero"
+            "$timeout",
+            "$q"
         ];
 
         // dependencies are inyected automatically
-        constructor(private superHeroes: Hero[]) {
+        constructor(private superHeroes: Hero[],
+                    private $timeout: ng.ITimeoutService,
+                    private $q: ng.IQService) {
         }
 
-        // get all remote heroes (synchronous)
-        getHeroes(): Hero[] {
-            return this.superHeroes;
+        // get all remote heroes (asynchronous)
+        getHeroes(): ng.IPromise<Hero[]> {
+            var def = this.$q.defer();
+
+            this.$timeout(() => {
+                def.resolve(this.superHeroes);
+            }, 2000);
+
+            return def.promise;
         }
 
         addHero(name: string) {
@@ -43,15 +52,5 @@ module Lesson06 {
             return this.superHeroes[Math.floor(Math.random() * 5)];
         }
     }
-
-    // CUSTOM PROVIDER
-    export class MyServiceProvider {
-
-        // dependencias inline
-        $get = ["superHeroes", (superHeroes: Hero[]) => {
-            return new SuperHeroesService(superHeroes);
-        }];
-    }
-
 
 }

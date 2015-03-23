@@ -1,4 +1,4 @@
-﻿module Lesson06 {
+﻿module Lesson07 {
 
     export function DashFilter() {
         return (input: string) => {

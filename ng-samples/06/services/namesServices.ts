@@ -24,7 +24,7 @@ module Lesson06 {
         ];
 
         // dependencies are inyected automatically
-        constructor(private superHeroes: any[], private randomHero: {name:string}) {            
+        constructor(private superHeroes: any[], private randomHero: {name:string}) {
         }
 
         // get all remote heroes (synchronous)

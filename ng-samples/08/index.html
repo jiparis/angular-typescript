@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>AngularJS services</title>
+    <title>AngularJS HTTP</title>
 </head>
 <body ng-app="myApp">
     <div ng-controller="heroesController as controller">
@@ -11,12 +11,11 @@
         <label id="thename">Add name: </label>
         <input name="thename" type="text" ng-model="name" />
         <input type="button" ng-click="controller.addName(name)" value="Add">
-        <input type="button" ng-click="controller.addRandom()" value="Add random">
 
         <div ng-show="!controller.people">Cargando ...</div>
         <ul>
             <li ng-repeat="hero in controller.people | filter:nameFilter | orderBy:name track by $index">
-                {{hero.name}}, {{hero.name | dash}}
+                {{hero.name}}
             </li>
         </ul>
 
@@ -25,7 +24,6 @@
     <script src="../lib/angularjs/angular.min.js"></script>
     <script src="services/namesServices.js"></script>
     <script src="controllers/namesController.js"></script>
-    <script src="filters/dashFilter.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
