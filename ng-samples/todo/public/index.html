@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Todos</title>
+    <link rel="stylesheet" href="todos.css"/>
+</head>
+<body ng-app="TodoApp">
+
+<div class="container" ng-controller="TodoController as cont">
+    <header>
+        <h1>Mis tareas</h1>
+
+        <form class="new-task" ng-submit="cont.addTodo(newTodo)">
+            <input type="text" name="text"
+                   ng-model="newTodo.description"
+                   placeholder="Añade una nueva tarea" >
+        </form>
+    </header>
+
+    <ul>
+        <li ng-repeat="todo in cont.todos track by $index"
+            ng-class="{checked: todo.done}">
+            <button class="delete" ng-click="cont.delete(todo)">X</button>
+            <input type="checkbox" ng-model="todo.done"
+                    ng-click="cont.toggle(todo)"/>
+
+            <span class="text">{{todo.description}}</span>
+
+        </li>
+    </ul>
+
+</div>
+
+<script src="lib/angular/angular.min.js"></script>
+<script src="app/services/TodoService.js"></script>
+<script src="app/controllers/TodoController.js"></script>
+<script src="app/app.js"></script>
+</body>
+</html>
