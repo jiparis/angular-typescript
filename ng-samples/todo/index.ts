@@ -40,7 +40,7 @@ module App {
     router.delete('/todos/:uid', (req, res) => {
         console.log("Borrando: " + req.param('uid'));
         todos = todos.filter((t) => {
-            return t.id != req.id;
+            return t.id != req.param('uid');
         });
         res.send(true);
     });

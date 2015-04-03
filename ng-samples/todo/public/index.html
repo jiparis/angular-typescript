@@ -22,10 +22,11 @@
         <li ng-repeat="todo in cont.todos track by $index"
             ng-class="{checked: todo.done}">
             <button class="delete" ng-click="cont.delete(todo)">X</button>
-            <input type="checkbox" ng-model="todo.done"
+            <input id="{{todo.id}}"
+                    type="checkbox" ng-model="todo.done"
                     ng-click="cont.toggle(todo)"/>
 
-            <span class="text">{{todo.description}}</span>
+            <label for="{{todo.id}}" class="text">{{todo.description}}</label>
 
         </li>
     </ul>
