@@ -87,6 +87,7 @@ li {
 
 li .text {
     margin-left: 10px;
+    cursor: pointer;
 }
 
 li.checked {
