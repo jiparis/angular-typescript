@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+<ul>
+    <li ng-repeat="todo in cont.todos track by $index"
+        ng-class="{checked: todo.done}">
+        <button class="delete" ng-click="cont.delete(todo)">X</button>
+        <input id="{{todo.id}}"
+               type="checkbox" ng-model="todo.done"
+               ng-click="cont.toggle(todo)"/>
 
-</body>
-</html>
+        <label for="{{todo.id}}" class="text">{{todo.description}}</label>
+
+    </li>
+</ul>
