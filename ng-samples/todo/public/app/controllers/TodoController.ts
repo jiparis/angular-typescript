@@ -4,19 +4,29 @@ module Todos{
 
     export class TodoController{
         static $inject = [
-            "TodoService"
+            "TodoService",
+            "$rootScope"
         ];
 
         todos: Todo[];
+        terminadas: Todo[];
 
-        constructor(private svc: ITodoService){
+        constructor(private svc: ITodoService,
+        $rootScope: ng.IRootScopeService){
 
             svc.getTodos().then((todos: Todo[]) => {
                 this.todos = todos;
+                if(this.todos) {
+                    this.terminadas = this.todos.filter((todo:Todo) => {
+                        return todo.done == true;
+                    });
+                }
+
             });
         }
 
         addTodo(todo: Todo){
+            todo.done = false;
             this.svc.addTodo(todo)
                 .then((newTodo: Todo) => {
                     this.todos.push(newTodo);
@@ -31,15 +41,14 @@ module Todos{
                 });
         }
 
-        delete(todo: Todo){
+        delete(todo: Todo) {
             this.svc.deleteTodo(todo)
-            .then(() => {
-                this.todos = this.todos.filter((t) => {
-                    return t.id != todo.id;
-                })
-            });
+                .then(() => {
+                    this.todos = this.todos.filter((t) => {
+                        return t.id != todo.id;
+                    })
+                });
         }
-
 
     }
 

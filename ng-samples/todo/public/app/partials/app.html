@@ -1,0 +1,28 @@
+<div class="container" ng-controller="TodoController as cont">
+    <header>
+        <h1>Mis tareas</h1>
+
+        <form class="new-task" ng-submit="cont.addTodo(newTodo)">
+            <input type="text" name="text"
+                   ng-model="newTodo.description"
+                   placeholder="Añade una nueva tarea" >
+        </form>
+    </header>
+
+    <todo-list lista="cont.todos"
+               titulo="Tareas pendientes"
+               on-delete="cont.delete(item)"
+               on-toggle="cont.toggle(item)"
+               done="false">
+
+    </todo-list>
+
+    <todo-list lista="cont.todos"
+               titulo="Tareas completadas"
+               on-delete="cont.delete(item)"
+               on-toggle="cont.toggle(item)"
+               done="true">
+
+    </todo-list>
+
+</div>

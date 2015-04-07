@@ -1,23 +1,50 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../models/Todo.ts" />
 /// <reference path="../services/TodoService.ts" />
-/// <reference path="../controllers/TodoController.ts" />
-
 
 module Todos{
 
-    export function TodoListDirective(): ng.IDirective{
+    export class TodoDirectiveController{
+        static $inject = [
+            "$scope",
+            "TodoService"
+        ];
+
+        constructor(private $scope,
+                    private todoSvc: ITodoService){
+        }
+
+        delete(todo: Todo){
+            this.$scope.onDelete({item: todo});
+        }
+
+        toggle(todo: Todo){
+            todo.done = !todo.done;
+            this.$scope.onToggle({item: todo});
+        }
+    }
+
+    export function TodoList(): ng.IDirective{
         return {
             restrict: 'E',
+            templateUrl: 'app/directives/todoList.html',
             replace: true,
-            templateUrl: "/app/directives/todoList.html",
-            controller: TodoController,
-            controllerAs: 'todolist',
-            scope: {
-                todos: '='
-            },
-            link: (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
+            link(scope: any,
+                 element: ng.IAugmentedJQuery,
+                 attrs: ng.IAttributes){
 
-            }
+
+            },
+            scope: {
+                lista: "=",
+                titulo: "@",
+                onDelete: "&",
+                onToggle: "&",
+                done: "@"
+            },
+            controller: TodoDirectiveController,
+            controllerAs: "todolist"
         };
     }
+
 }

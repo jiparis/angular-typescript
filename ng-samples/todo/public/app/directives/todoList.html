@@ -1,12 +1,13 @@
-<ul>
-    <li ng-repeat="todo in cont.todos track by $index"
-        ng-class="{checked: todo.done}">
-        <button class="delete" ng-click="cont.delete(todo)">X</button>
-        <input id="{{todo.id}}"
-               type="checkbox" ng-model="todo.done"
-               ng-click="cont.toggle(todo)"/>
+<div>
+    <h4>{{titulo}}</h4>
+    <ul>
+        <li ng-repeat="todo in lista | filter:{done: done} track by $index"
+            ng-class="{checked: todo.done}">
+            <button class="delete" ng-click="todolist.delete(todo)">X</button>
 
-        <label for="{{todo.id}}" class="text">{{todo.description}}</label>
+            <span class="text"
+                   ng-click="todolist.toggle(todo)">{{todo.description}}</span>
 
-    </li>
-</ul>
+        </li>
+    </ul>
+</div>
