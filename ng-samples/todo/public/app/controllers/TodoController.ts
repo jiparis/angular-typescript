@@ -33,7 +33,8 @@ module Todos{
         }
 
         addTodo(todo: any){
-            //todo.done = false;
+            if(!todo.done) // aseguramos un valor
+              todo.done = false;
             todo.category = todo.category.id;
             this.svc.addTodo(todo)
                 .then((newTodo: Todo) => {
