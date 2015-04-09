@@ -11,6 +11,13 @@ module Todos{
         todos: Todo[];
         terminadas: Todo[];
 
+        categorias = [
+            {id: 0, label: "Limpiar", type:"Casa"},
+            {id:1, label: "Cocinar", type:"Casa"},
+            {id:3, label: "Terminar tareas", type:"Trabajo"},
+            {id:4, label: "Ir a desayunar", type:"Trabajo"}
+        ];
+
         constructor(private svc: ITodoService,
         $rootScope: ng.IRootScopeService){
 
@@ -25,8 +32,9 @@ module Todos{
             });
         }
 
-        addTodo(todo: Todo){
-            todo.done = false;
+        addTodo(todo: any){
+            //todo.done = false;
+            todo.category = todo.category.id;
             this.svc.addTodo(todo)
                 .then((newTodo: Todo) => {
                     this.todos.push(newTodo);

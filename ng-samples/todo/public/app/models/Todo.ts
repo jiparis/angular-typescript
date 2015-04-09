@@ -5,5 +5,6 @@ module Todos{
         id: string;
         description: string;
         done: boolean;
+        category: string;
     }
 }

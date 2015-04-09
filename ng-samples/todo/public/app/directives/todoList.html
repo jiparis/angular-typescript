@@ -5,6 +5,8 @@
             ng-class="{checked: todo.done}">
             <button class="delete" ng-click="todolist.delete(todo)">X</button>
 
+            <a href="#/todos/{{todo.id}}">Detalle</a>
+
             <span class="text"
                    ng-click="todolist.toggle(todo)">{{todo.description}}</span>
 

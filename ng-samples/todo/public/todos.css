@@ -54,7 +54,8 @@ form {
     position: relative;
 }
 
-.new-task input {
+
+.new-task input[type=text] {
     box-sizing: border-box;
     padding: 10px 0;
     background: transparent;

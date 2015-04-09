@@ -7,6 +7,7 @@ module Todos{
         addTodo(Todo): ng.IPromise<Todo>;
         deleteTodo(Todo): ng.IPromise<boolean>;
         modify(Todo): ng.IPromise<Todo>;
+        getTodo(string): ng.IPromise<Todo>
     }
 
     export class TodoService implements ITodoService{
@@ -34,6 +35,13 @@ module Todos{
                 });
 
             return d.promise;
+        }
+
+        getTodo(id: string): ng.IPromise<Todo>{
+            return this.getTodos()
+                .then((todos: Todo[]) => {
+                    return todos.filter((t) => t.id == id)[0];
+                });
         }
 
         addTodo(todo: Todo): ng.IPromise<Todo>{

@@ -2,10 +2,33 @@
     <header>
         <h1>Mis tareas</h1>
 
-        <form class="new-task" ng-submit="cont.addTodo(newTodo)">
+        <form name="newtask" class="new-task">
             <input type="text" name="text"
                    ng-model="newTodo.description"
-                   placeholder="Añade una nueva tarea" >
+                   ng-maxlength="50"
+                   ng-required="true"
+                   placeholder="Añade una nueva tarea"
+                   ng-model-options="{ debounce: 200 }"
+                   mi-validador>
+
+            <input type="checkbox"
+                   name="done"
+                   ng-model="newTodo.done" />
+
+            <select name="category"
+                    ng-model="newTodo.category"
+                    ng-options="cat.label group by cat.type for cat in cont.categorias">
+                <option value="">Ninguna</option>
+
+            </select>
+
+                <div ng-show="newtask.$error.maxlength">Máximo 50 caracteres!!</div>
+                <div ng-show="newtask.$error.required">Campo requerido!!</div>
+            <div ng-show="newtask.$error.miValidador">No escribas "ANGULAR" !!</div>
+
+            <button ng-disabled="newtask.$invalid"
+                    ng-click="cont.addTodo(newTodo)">Añadir</button>
+
         </form>
     </header>
 
