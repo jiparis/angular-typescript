@@ -35,7 +35,8 @@ module Todos{
         addTodo(todo: any){
             if(!todo.done) // aseguramos un valor
               todo.done = false;
-            todo.category = todo.category.id;
+            if(todo.category) // nos quedamos sólo con el id (no lo hagas en casa)
+              todo.category = todo.category.id;
             this.svc.addTodo(todo)
                 .then((newTodo: Todo) => {
                     this.todos.push(newTodo);
