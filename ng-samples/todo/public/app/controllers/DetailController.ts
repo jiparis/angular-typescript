@@ -1,5 +1,5 @@
 /// <reference path="../services/TodoService.ts" />
-/// <reference path="../../../../typings/angularjs/angular-route.d.ts" />
+/// <reference path="../../../typings/angularjs/angular-route.d.ts" />
 
 module Todos{
 
@@ -12,8 +12,7 @@ module Todos{
         todo: Todo;
 
         constructor(private svc: ITodoService,
-                    private $routeParams: angular.route.IRouteParamsService,
-                    private title: string){
+                    private $routeParams: angular.route.IRouteParamsService){
 
 
             var id = this.$routeParams['id'];

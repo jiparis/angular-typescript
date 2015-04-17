@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../models/Todo.ts" />
 
 module Todos{

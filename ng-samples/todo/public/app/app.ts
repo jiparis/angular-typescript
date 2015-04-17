@@ -1,6 +1,6 @@
-/// <reference path="../../../typings/angularjs/angular.d.ts" />
-/// <reference path="../../../typings/angularjs/angular-route.d.ts" />
-// / <reference path="services/TodoService.ts" />
+/// <reference path="../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../typings/angularjs/angular-route.d.ts" />
+/// <reference path="services/TodoService.ts" />
 /// <reference path="controllers/TodoController.ts" />
 /// <reference path="controllers/DetailController.ts" />
 /// <reference path="directives/TodoList.ts" />

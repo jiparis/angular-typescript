@@ -1,9 +1,12 @@
-/// <reference path="../../../../typings/angularjs/angular.d.ts" />
+/// <reference path="../../../typings/angularjs/angular.d.ts" />
 
 module Todos{
 
     class MiController{
-
+        static $inject = [
+            "$q",
+            "$timeout"
+        ];
 
         constructor(private $q:ng.IQService, private $timeout: ng.ITimeoutService){
         }
